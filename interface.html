@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Game Interface</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="css/interface.css" rel="stylesheet" />
+  </head>
+  <body>
+    <video id="video-background" autoplay muted loop>
+      <source src="media/jumprope.mp4" type="video/mp4" />
+    </video>
+    <div class="title-container">
+      <h1 class="title">The Game Interface</h1>
+    </div>
+    <div class="carousel-container">
+      <div class="carousel">
+        <div
+          class="carousel-item"
+          style="background-image: url(media/memory_pics.jpg)"
+        ></div>
+        <div
+          class="carousel-item"
+          style="background-image: url(media/pong_blue.jpg)"
+        ></div>
+        <div
+          class="carousel-item"
+          style="background-image: url(media/color_dust.jpg)"
+        ></div>
+      </div>
+      <div class="game-button-container">
+        <button class="game-button" data-game="memory">
+          <span class="game-title">Memory</span>
+          <span class="game-description"
+            >Sharpen your brain on this picture memory game.</span
+          >
+        </button>
+        <button class="game-button" data-game="pong">
+          <span class="game-title">Pong</span>
+          <span class="game-description">Always a classic: Pong.</span>
+        </button>
+        <button class="game-button" data-game="coloring">
+          <span class="game-title">Coloring</span>
+          <span class="game-description">Relax and Color</span>
+        </button>
+      </div>
+      <div class="game-description"></div>
+    </div>
+    <script src="js/interface.js"></script>
+  </body>
+</html>

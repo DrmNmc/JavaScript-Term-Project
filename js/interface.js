@@ -15,6 +15,11 @@ gameButtons.forEach((button) => {
     gameTitle.style.opacity = 1;
     gameDescription.style.opacity = 0;
   });
+
+  button.addEventListener("click", () => {
+    const gameName = button.dataset.game;
+    window.location.href = `${gameName}/${gameName}.html`;
+  });
 });
 
 const carouselItems = document.querySelectorAll(".carousel-item");

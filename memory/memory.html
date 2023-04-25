@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jumpscare jQuery Memory Game</title>
+    <link rel="stylesheet" href="css/memory.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="game-container">
+      <button id="startGameButton" class="start-game-button">Start Game</button>
+      <div class="scary-face"></div>
+
+      <div class="info">
+        <span class="lives"></span>
+        <span class="round"></span>
+      </div>
+      <div class="grid"></div>
+    </div>
+    <footer>
+      <a href="media/readme.txt" id="readmeLink">Readme</a>
+    </footer>
+    <div id="readmeModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <pre id="readmeContent"></pre>
+      </div>
+    </div>
+    <script src="js/memory.js"></script>
+  </body>
+</html>

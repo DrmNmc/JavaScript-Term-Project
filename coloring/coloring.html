@@ -1,30 +1,85 @@
 <!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coloring Game</title>
-    <link rel="stylesheet" href="coloring.css" />
+    <link rel="stylesheet" href="css/coloring.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    />
   </head>
   <body>
-    <div>
-      <label for="apiKey">Enter your Pixabay API Key:</label>
-      <input type="text" id="apiKey" />
-      <button id="loadImage">Load Image</button>
+    <header>
+      <h1>API Coloring Game</h1>
+    </header>
+    <div id="instructionsModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Instructions</h2>
+        <p>
+          In order to play the coloring game with the API, you must first create
+          your own free Pixabay API key.
+        </p>
+        <div class="button-container">
+          <button id="getAPIButton">Get new Pixabay API</button>
+          <button id="haveAPIButton">Already have an API?</button>
+        </div>
+        <div id="inputContainer" style="display: none">
+          <div id="apiControls">
+            <label for="apiKey">Enter your API Key:</label>
+            <input type="text" id="apiKey" />
+            <button id="fetchImage">Fetch Images</button>
+          </div>
+        </div>
+        <p>
+          <a href="#" id="load">Already have a saved image?</a>
+          <pre id="readmeContent"></pre>
+        </p>
+      </div>
+    </div>
+    <div id="imageSelectionModal" class="modal">
+      <div class="modal-content">
+        <div id="imageGrid"></div>
+        <div class="button-container">
+          <button id="colorButton" disabled>Color</button>
+          <button id="refreshButton">Refresh</button>
+        </div>
+      </div>
     </div>
 
-    <h1>Coloring Game</h1>
-    <div id="imageContainer"></div>
-    <script src="coloring.js"></script>
+    <div id="main">
+      <div id="leftPanel">
+        <button id="save" title="Save"><i class="fas fa-save"></i></button>
+        <button id="load" title="Load"><i class="fas fa-folder"></i></button>
+        <button id="download" title="Download">
+          <i class="fas fa-download"></i>
+        </button>
+        <button id="undo" title="Undo"><i class="fas fa-undo"></i></button>
+        <button id="redo" title="Redo"><i class="fas fa-redo"></i></button>
+        <button id="zoomIn" title="Zoom In">
+          <i class="fas fa-search-plus"></i>
+        </button>
+        <button id="zoomOut" title="Zoom Out">
+          <i class="fas fa-search-minus"></i>
+        </button>
+        <div id="currentColor"></div>
+      </div>
+      <div id="imageContainer">
+        <div id="imageZoomContainer">
+          <div id="imageWrapper">
+            <img src="" alt="Coloring Image" />
+          </div>
+        </div>
+      </div>
+      <div id="rightPanel">
+        <div id="recentColors"></div>
+        <div id="colorSelection">
+          <div class="colorOption"></div>
+        </div>
+      </div>
+    </div>
+    <script src="js/coloring.js"></script>
   </body>
 </html>
-<!-- 
-    TODO:
-    1) create layout
-    2) buttons for fetch image and get new pixabay api.
-    3) color pallet wheel
-    4) save button/load button/download button (can we autosave?)
-    5) undo and redo buttons.
-    6) zoom in/ zoom out buttons.
-    7) do the css but allow user to select a color theme that will override the external colors.
-
--->

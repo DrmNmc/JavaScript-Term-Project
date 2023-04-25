@@ -1,11 +1,277 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f8f8f8;
-  }
-  
-  #imageContainer {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-image: linear-gradient(135deg, #3f51b5, #283593);
+  color: white;
+  border-bottom: 1px solid #ccc;
+}
+
+h1 {
+  margin: 0;
+}
+
+#currentColor {
+  width: 100%;
+  height: 100%;
+}
+
+#main {
+  display: flex;
+  flex: 1;
+  height: calc(100% - 30px);
+}
+
+#leftPanel {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  padding: 0.5rem;
+}
+
+#imageContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  position: relative;
+  overflow: scroll;
+}
+
+#imageZoomContainer {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+#imageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#rightPanel {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+#colorSelection {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(
+    to top,
+    hsl(0, 100%, 50%),
+    hsl(60, 100%, 50%),
+    hsl(120, 100%, 50%),
+    hsl(180, 100%, 50%),
+    hsl(240, 100%, 50%),
+    hsl(300, 100%, 50%),
+    hsl(360, 100%, 50%)
+  );
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.colorOption {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+}
+
+#recentColors {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.recentColor {
+  width: 20%;
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 50%;
+  margin: 5px 2.5%;
+  background-size: cover;
+}
+
+button {
+  background-color: #3f51b5;
+  border: none;
+  border-radius: 5px;
+  padding: 4px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+button:hover {
+  background-color: #283593;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.16), 0 4px 6px rgba(0, 0, 0, 0.23);
+}
+
+button:focus {
+  outline: none;
+}
+
+button i {
+  font-size: 20px;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+/* modal stuff */
+
+/* INSTRUCTIONS MODAL */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  width: 70%;
+  height: 70%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 24px;
+  color: #3f51b5;
+}
+
+.modal-content p {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 16px;
+  color: #333;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+#inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#inputContainer label {
+  font-weight: bold;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* IMAGE MODAL */
+#imageGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 800px;
+  height: 320px;
+}
+
+.imageOption {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.imageOption.selected {
+  border: 3px solid #1e90ff;
+  box-sizing: border-box;
+}
+
+/* read me modal */
+#readmeContent {
+  font-family: monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 16px;
+  max-height: 400px;
+  overflow-y: auto;
+}
